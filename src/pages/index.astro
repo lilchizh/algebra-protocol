@@ -1,0 +1,72 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import Charts from '../layouts/Charts.astro';
+import { Image } from '@astrojs/image/components'
+import AlgebraLogo from '../images/algebra-logo.png'
+---
+
+<Layout title="Welcome to Astro.">
+	<main class="flex flex-col py-[3rem] lg:px-[1.5rem] lg:py-[10rem] lg:max-w-[60%]">
+		<div class="flex flex-col text-center lg:flex-row items-center justify-center">
+			<div>
+				<Image src={AlgebraLogo} alt="Algebra Logo" class="mb-8 lg:mr-8 lg:mb-0" fit={'contain'} />
+			</div>
+			<h1>Algebra Protocol</h1>
+		</div>
+		<!-- <h1>Welcome to <span class="text-gradient">Astro</span></h1> -->
+		<p class="text-center mt-10">Providing DEXs with the best concentrated liquidity solutions. Increase both capital efficiency & user convenience of your project effortlessly.</p>
+		<div class="flex flex-col justify-center mt-16 mx-6 lg:mx-0 lg:flex-row">
+			<a href="https://algebra.finance/form/" target="_blank" rel="noreferrer noopener" class="py-3 px-4 text-lg font-semibold w-full lg:w-fit text-center rounded-xl bg-[#36f] hover:bg-[#36f]/70">Integrate Algebra</a>
+			<a href="https://docs.algebra.finance" target="_blank" rel="noreferrer noopener" class="py-3 px-4 text-lg font-semibold mt-8 lg:mt-0 lg:ml-8 w-full lg:w-fit text-center rounded-xl border-2 border-solid border-white hover:color-white/70 hover:border-white/70">View Documentation</a>
+		</div>
+		<Charts/>
+	</main>
+</Layout>
+
+<style>
+	main {
+		margin: auto;
+		color: white;
+	}
+	h1 {
+		font-size: 3rem;
+		font-weight: 700;
+		margin: 0;
+	}
+	p {
+		font-size: 1.5rem;
+	}
+	.text-gradient {
+		background-image: var(--accent-gradient);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-size: 400%;
+		background-position: 0%;
+	}
+	.instructions {
+		line-height: 1.6;
+		margin: 1rem 0;
+		border: 1px solid rgba(var(--accent), 25%);
+		background-color: white;
+		padding: 1rem;
+		border-radius: 0.4rem;
+	}
+	.instructions code {
+		font-size: 0.875em;
+		font-weight: bold;
+		background: rgba(var(--accent), 12%);
+		color: rgb(var(--accent));
+		border-radius: 4px;
+		padding: 0.3em 0.45em;
+	}
+	.instructions strong {
+		color: rgb(var(--accent));
+	}
+	.link-card-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+		gap: 1rem;
+		padding: 0;
+	}
+</style>

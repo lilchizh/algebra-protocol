@@ -1,0 +1,17 @@
+---
+
+interface Props {
+    plus: () => void
+}
+
+const { plus } = Astro.props;
+
+---
+
+<button id="plus-button">Plus</button>
+<script>
+
+const plusButton = document.getElementById('plus-button')
+
+// plusButton.addEventListener('click', plus)
+</script>
