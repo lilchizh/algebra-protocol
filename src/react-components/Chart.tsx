@@ -78,10 +78,12 @@ export default function Chart({ chartData, chartType, chartTitle, chartCurrentVa
                 borderColor: "#585858",
             },
             handleScale: {
-                mouseWheel: false
+                mouseWheel: false,
             },
             handleScroll: {
-                pressedMouseMove: false
+                pressedMouseMove: false,
+                vertTouchDrag: false,
+                horzTouchDrag: false
             }
         });
 
