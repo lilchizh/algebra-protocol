@@ -17,39 +17,44 @@ interface IDexCards {
 export default function DexCards({ selectedDex, selectDex }: IDexCards) {
 
     const dexes = [
-        { name: 'QuickSwap', network: 'Polygon', dexLogo: QuickswapLogo, networkLogo: PolygonLogo, id: 'quickswap' },
-        { name: 'QuickSwap', network: 'Dogechain', dexLogo: QuickswapLogo, networkLogo: DogechainLogo, id: 'dogechain' },
-        { name: 'StellaSwap', network: 'Moonbeam', dexLogo: StellaswapLogo, networkLogo: MoonbeamLogo, id: 'stella' },
-        { name: 'UbeSwap', network: 'CELO', dexLogo: UbeswapLogo, networkLogo: CeloLogo, id: 'ubeswap', locked: true },
-        { name: 'Camelot', network: 'Arbitrum', dexLogo: CamelotLogo, networkLogo: ArbitrumLogo, id: 'camelot', locked: true },
+        { name: 'QuickSwap', network: 'Polygon', dexLogo: QuickswapLogo, networkLogo: PolygonLogo, id: 'QuickSwap Polygon' },
+        { name: 'QuickSwap', network: 'Dogechain', dexLogo: QuickswapLogo, networkLogo: DogechainLogo, id: 'QuickSwap Dogechain' },
+        { name: 'StellaSwap', network: 'Moonbeam', dexLogo: StellaswapLogo, networkLogo: MoonbeamLogo, id: 'StellaSwap' },
     ]
 
-    return <div className="flex flex-wrap  lg:gap-6 bg-[#0f0e15] px-8 py-8 gap-8 lg:py-4 rounded-t-lg">
+    return <div className="flex flex-wrap h-full bg-[#0a090f] rounded-tr-lg">
         {
-            dexes.map((dex, i) => <div key={i} className={`relative flex flex-col items-center border-solid border-2 p-8 rounded-xl w-full lg:w-[150px] ${selectedDex === dex.id ? 'bg-[#130e28] border-[#36f]' : 'bg-[#0a090f] border-[#0a090f] hover:border-[#101c3d]'} ${dex.locked ? 'cursor-default hover:border-[#0a090f]' : 'cursor-pointer'}`}  onClick={() => dex.locked ? null : selectDex(dex.id)} >
+            dexes.map((dex, i) => <div key={i} className={`relative flex items-center border-solid border-b-2 py-4 px-8 w-full lg:w-fit cursor-pointer select-none ${selectedDex === dex.id ? 'bg-[#130e28] border-[#36f]' : 'bg-[#0a090f] border-[#0a090f] hover:bg-black hover:border-[#101c3d]'}`} onClick={() => selectDex(selectedDex === dex.id ? null : dex.id)} >
                 <div className="relative">
                     {/* @ts-ignore */}
                     <img src={dex.dexLogo.src}
                         alt={dex.name}
-                        width={64}
-                        height={64}
-                        className={`object-contain rounded-full border-1 w-[64px] h-[64px]`}
+                        width={32}
+                        height={32}
+                        className={`object-contain rounded-full border-1 w-[32px] h-[32px]`}
                     />
                     {/* @ts-ignore */}
                     <img src={dex.networkLogo.src}
                         alt={dex.network}
-                        width={24}
-                        height={24}
-                        className={`absolute top-0 right-0 object-contain rounded-full border-solid border-2 w-[24px] h-[24px] ${selectedDex === dex.id ? 'border-[#130e28]' : 'border-[#0f0e15]'}`}
+                        width={20}
+                        height={20}
+                        className={`absolute top-[-6px] right-[-6px] object-contain rounded-full border-solid border-2 w-[20px] h-[20px] ${selectedDex === dex.id ? 'border-[#130e28]' : 'border-[#0f0e15]'}`}
                     />
                 </div>
-                <div className={`mt-5 ${selectedDex === dex.id ? 'font-bold' : 'font-semibold'}`}>{dex.name}</div>
-                <div className="bg-[#0d091a] mt-4 rounded-b-lg text-[#b7b7b7] uppercase text-xs">{dex.network}</div>
-                {
+                <div className="ml-4">
+                    <div className={`font-semibold`}>{dex.name}</div>
+                    <div className="rounded-b-lg text-[#b7b7b7] text-xs">{dex.network}</div>
+                    {/* {
                     dex.locked ? <div className="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center rounded-xl text-[#36f] bg-black/80">
                         Coming Soon
                     </div> : null
-                }
+                } */}
+                    {
+                        selectedDex === dex.id ? <div className="absolute flex items-center justify-center top-[8px] right-[8px] rounded-full w-4 h-4 bg-[#e05c5c]">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-x"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+                        </div> : null
+                    }
+                </div>
             </div>)
         }
     </div>

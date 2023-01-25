@@ -1,17 +1,9 @@
 ---
+import ChartLayout from "../react-components/ChartLayout";
 import Charts from "../react-components/Charts";
 import DexCards from "../react-components/DexCards";
 import TotalStats from "../react-components/TotalStats";
 
 ---
 
-    <TotalStats client:only />
-    <div class="charts-layout">
-        <div class="chart-menu">
-            <Charts client:only/>
-        </div>
-    </div>
-
-    <style>
-        
-    </style>
+<ChartLayout client:only/>
