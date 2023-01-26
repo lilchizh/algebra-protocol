@@ -20,18 +20,20 @@ interface TotalStats {
     currentTVL: StatsCard;
     currentVolume: StatsCard;
     currentFees: StatsCard;
+    currentProtocolEarned: StatsCard;
     selectedChart: ChartType,
     selectChart: (chart: ChartType) => void
 }
 
-export default function TotalStats({ currentTVL, currentVolume, currentFees, selectedChart, selectChart }: TotalStats) {
+export default function TotalStats({ currentTVL, currentVolume, currentFees, currentProtocolEarned, selectedChart, selectChart }: TotalStats) {
 
     const Loader = () => <span className="w-[24px] h-[24px] inline-block border-2 border-solid border-white rounded-full border-b-transparent animate-[rotation_1s_linear_infinite]"></span>
 
     const cards = [
         { title: 'Total Value Locked', type: ChartType.TVL, value: currentTVL?.value, change: currentTVL?.change },
         { title: 'Volume 24H', type: ChartType.VOLUME, value: currentVolume?.value, change: currentVolume?.change },
-        { title: 'Collected Fees 24H', type: ChartType.FEES, value: currentFees?.value, change: currentFees?.change }
+        { title: 'Collected Fees 24H', type: ChartType.FEES, value: currentFees?.value, change: currentFees?.change },
+        { title: 'Protocol Earned 24H', type: ChartType.PROTOCOL_EARNED, value: currentProtocolEarned?.value, change: currentProtocolEarned?.change }
     ]
 
     return <div className="flex flex-col w-full h-full lg:rounded-bl-lg bg-[#0f0e15] shadow-xl">
@@ -43,14 +45,10 @@ export default function TotalStats({ currentTVL, currentVolume, currentFees, sel
                         card.value ?
                             <div className="flex items-center">
                                 <div className="font-bold text-3xl">{format.format(card.value)}</div>
-                                {
-                                    card.type === ChartType.TVL ?
-                                    <div className={`ml-4 ${card.change > 0 ? 'text-[#46ec46]' : 'text-[#ff4545]'}`}>
-                                        <span>{card.change > 0 ? '+' : ''}</span>
-                                        <span>{`${card.change.toFixed(2)}%`}</span>
-                                    </div>
-                                    : null
-                                }
+                                <div className={`ml-4 ${card.change > 0 ? 'text-[#46ec46]' : 'text-[#ff4545]'}`}>
+                                    <span>{card.change > 0 ? '+' : ''}</span>
+                                    <span>{`${card.change.toFixed(2)}%`}</span>
+                                </div>
                             </div> : <div className="min-h-[36px]">
                                 <Loader />
                             </div>

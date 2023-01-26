@@ -57,7 +57,7 @@ export default function Chart({ chartData, chartType, chartTitle, chartCurrentVa
 
         const chart = LightWeightCharts.createChart(chartRef.current, {
             width: chartRef.current.parentElement?.clientWidth,
-            height: chartRef.current.parentElement?.clientHeight || 300,
+            height: chartRef.current.parentElement?.clientHeight || 416,
             layout: {
                 backgroundColor: "transparent",
                 textColor: "#585858",
@@ -186,7 +186,7 @@ export default function Chart({ chartData, chartType, chartTitle, chartCurrentVa
 
         </div>
         <div className="relative">
-            <div style={{ height: '300px' }} ref={chartRef}></div>
+            <div style={{ height: '416px' }} ref={chartRef}></div>
             {!chartData ? <div className="absolute flex items-center justify-center w-full h-full top-0">
                 <span className="w-[48px] h-[48px] border-2 border-solid border-white rounded-full border-b-transparent animate-[rotation_1s_linear_infinite]"></span>
             </div> : null}
